@@ -58,6 +58,43 @@ router.post("/", (req, res)=>{
         })
 })
 
+router.put("/:id", (req, res)=> {
+    pModel.update(req.params.id, req.body)
+        .then((project)=> {
+            if(project) {
+                res.status(200).json(project)
+            }
+            else{
+                res.status(404).json({
+                    message: "This project doesn't exist"
+                })
+            }
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+})
+
+router.delete("/:id", (req, res)=> {
+    pModel.remove(req.params.id)
+        .then((project)=> {
+            if(project){
+                res.status(200).json({
+                    message: "You've deleted something"
+                })
+            }
+            else{
+                res.status(400).json({
+                    message: "This project doesn't exist"
+                })
+            }
+        })
+        .catch((err)=> {
+            console.log(err)
+        })
+    
+})
+
 
 
 
