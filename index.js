@@ -22,7 +22,7 @@ const port = 5000;
 
 server.use(express.json())
 server.use('/api/actions', actionRouter);
-server.use('/api/project', projectRouter)
+server.use('/api/projects', projectRouter)
 
 server.listen(port, ()=>{
     console.log(`Server is running at http://localhost:${port}`)
