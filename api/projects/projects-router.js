@@ -95,6 +95,23 @@ router.delete("/:id", (req, res)=> {
     
 })
 
+router.get("/:id/actions", (req, res)=> {
+    pModel.getProjectActions(req.params.id)
+        .then((action)=> {
+            if(action){
+                return res.status(200).json(action)
+            }
+            else{
+                res.status(400).json({
+                    message: "There's no action for this project"
+                })
+            }
+        })
+        .catch((err) =>{
+            console.log(err)
+        })
+})
+
 
 
 
